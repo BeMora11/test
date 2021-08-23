@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ConsultaService} from './servicios/consulta.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'examen';
+  lista : any = [];
+
+  constructor(private servicio : ConsultaService){}
+
+  ngOnInit(){
+    this.servicio.getData().then((res) => {
+      // this.lista = res;
+      // console.log(res)
+      this.lista = res;
+    });
+  }
 }
